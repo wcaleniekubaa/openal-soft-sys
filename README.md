@@ -1,0 +1,1 @@
+crate that provides bindings to openal-soft library
