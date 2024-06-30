@@ -1,1 +1,1 @@
-crate that provides bindings to openal-soft library
+crate that provides ffi interface to openal-soft library
