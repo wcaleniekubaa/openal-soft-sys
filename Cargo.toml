@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["wcaleniekubaa"]
 description = "crate that provides ffi interface to openal-soft library"
 readme = "README.md"
-license-file = "LICENSE.txt"
+license = "LGPL-2.0"
 keywords = ["audio", "openal", "openal-soft", "ffi"]
 
 
