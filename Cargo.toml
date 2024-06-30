@@ -7,7 +7,7 @@ description = "crate that provides ffi interface to openal-soft library"
 readme = "README.md"
 license = "LGPL-2.0"
 keywords = ["audio", "openal", "openal-soft", "ffi"]
-
+repository = "https://github.com/wcaleniekubaa/openal-soft-sys"
 
 [build-dependencies]
 cmake = { version = "0.1.50", optional = true }
