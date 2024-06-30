@@ -1,6 +1,6 @@
 [package]
 name = "openal-soft-sys"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["wcaleniekubaa"]
 description = "crate that provides ffi interface to openal-soft library"
