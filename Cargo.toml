@@ -2,6 +2,12 @@
 name = "openal-soft-sys"
 version = "0.1.0"
 edition = "2021"
+authors = ["wcaleniekubaa"]
+description = "crate that provides ffi interface to openal-soft library"
+readme = "README.md"
+license-file = "LICENSE.txt"
+keywords = ["audio", "openal", "openal-soft", "ffi"]
+
 
 [build-dependencies]
 cmake = { version = "0.1.50", optional = true }
@@ -32,9 +38,10 @@ default = [
     "enable_opensl",
     "enable_portaudio",
     "enable_wave_writer",
+    "dynamic_link",
 ]
 bundled = ["dep:cmake"]
-dynamic-link = []
+dynamic_link = []
 check_dlopen = []
 enable_legacy_eax = []
 enable_sse = []
