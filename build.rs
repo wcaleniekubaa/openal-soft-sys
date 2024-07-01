@@ -6,6 +6,7 @@ fn main() {
     build_cmake();
 }
 
+#[cfg(feature = "bundled")]
 macro_rules! bool {
     ($e:expr) => {
         if $e {
@@ -37,156 +38,148 @@ fn build_cmake() {
         .define("ALSOFT_STATIC_LIBGCC", bool!(cfg!(feature = "static_crt")))
         .define(
             "ALSOFT_STATIC_LIBSTDCXX",
-            bool!(cfg!(feature = "static_cxxrt"))
+            bool!(cfg!(feature = "static_cxxrt")),
         )
         .define(
             "ALSOFT_STATIC_WINPTHREAD",
-            bool!(cfg!(feature = "static_cxxrt"))
+            bool!(cfg!(feature = "static_cxxrt")),
         )
         .define(
             "LIBTYPE",
-            if cfg!(feature = "dynamic-link") {
-                "SHARED"
-            } else {
+            if cfg!(feature = "static_link") {
                 "STATIC"
-            }
+            } else {
+                "SHARED"
+            },
         )
         .define("ALSOFT_CPUEXT_SSE", bool!(cfg!(feature = "enable_sse")))
         .define("ALSOFT_CPUEXT_SSE2", bool!(cfg!(feature = "enable_sse2")))
         .define("ALSOFT_CPUEXT_SSE3", bool!(cfg!(feature = "enable_sse3")))
         .define(
             "ALSOFT_CPUEXT_SSE4_1",
-            bool!(cfg!(feature = "enable_sse4_1"))
-        )
-        .define(
-            "ALSOFT_CPUEXT_SSE4_2",
-            bool!(cfg!(feature = "enable_sse4_2"))
+            bool!(cfg!(feature = "enable_sse4_1")),
         )
         .define(
             "ALSOFT_CPUEXT_NEON",
-            bool!(cfg!(feature = "enable_arm_neon"))
+            bool!(cfg!(feature = "enable_arm_neon")),
         )
         .define(
             "ALSOFT_ENABLE_SSE2_CODEGEN",
-            bool!(cfg!(feature = "enable_sse2_codegen"))
+            bool!(cfg!(feature = "enable_sse2_codegen")),
         )
         .define("ALSOFT_RTKIT", bool!(cfg!(feature = "enable_rtkit")))
         .define(
             "ALSOFT_BACKEND_PIPEWIRE",
-            bool!(cfg!(feature = "enable_pipewire"))
+            bool!(cfg!(feature = "enable_pipewire")),
         )
         .define(
             "ALSOFT_BACKEND_PULSEAUDIO",
-            bool!(cfg!(feature = "enable_pulseaudio"))
+            bool!(cfg!(feature = "enable_pulseaudio")),
         )
         .define("ALSOFT_BACKEND_ALSA", bool!(cfg!(feature = "enable_alsa")))
         .define("ALSOFT_BACKEND_OSS", bool!(cfg!(feature = "enable_oss")))
         .define(
             "ALSOFT_BACKEND_SOLARIS",
-            bool!(cfg!(feature = "enable_solaris"))
+            bool!(cfg!(feature = "enable_solaris")),
         )
         .define(
             "ALSOFT_BACKEND_SNDIO",
-            bool!(cfg!(feature = "enable_sndio"))
+            bool!(cfg!(feature = "enable_sndio")),
         )
         .define(
             "ALSOFT_BACKEND_WINMM",
-            bool!(cfg!(feature = "enable_winmm"))
+            bool!(cfg!(feature = "enable_winmm")),
         )
         .define(
             "ALSOFT_BACKEND_DSOUND",
-            bool!(cfg!(feature = "enable_directsound"))
+            bool!(cfg!(feature = "enable_directsound")),
         )
         .define(
             "ALSOFT_BACKEND_WASAPI",
-            bool!(cfg!(feature = "enable_wasapi"))
+            bool!(cfg!(feature = "enable_wasapi")),
         )
         .define("ALSOFT_BACKEND_JACK", bool!(cfg!(feature = "enable_jack")))
         .define(
             "ALSOFT_BACKEND_COREAUDIO",
-            bool!(cfg!(feature = "enable_coreaudio"))
+            bool!(cfg!(feature = "enable_coreaudio")),
         )
         .define("ALSOFT_BACKEND_OBOE", bool!(cfg!(feature = "enable_oboe")))
         .define(
             "ALSOFT_BACKEND_OPENSL",
-            bool!(cfg!(feature = "enable_opensl"))
+            bool!(cfg!(feature = "enable_opensl")),
         )
         .define(
             "ALSOFT_BACKEND_PORTAUDIO",
-            bool!(cfg!(feature = "enable_portaudio"))
+            bool!(cfg!(feature = "enable_portaudio")),
         )
         .define("ALSOFT_BACKEND_SDL2", bool!(cfg!(feature = "enable_sdl2")))
         .define(
             "ALSOFT_BACKEND_WAVE",
-            bool!(cfg!(feature = "enable_wave_writer"))
+            bool!(cfg!(feature = "enable_wave_writer")),
         )
         .define("ALSOFT_REQUIRE_SSE", bool!(cfg!(feature = "require_sse")))
         .define("ALSOFT_REQUIRE_SSE2", bool!(cfg!(feature = "require_sse2")))
         .define("ALSOFT_REQUIRE_SSE3", bool!(cfg!(feature = "require_sse3")))
         .define(
             "ALSOFT_REQUIRE_SSE4_1",
-            bool!(cfg!(feature = "require_sse4_1"))
-        )
-        .define(
-            "ALSOFT_REQUIRE_SSE4_2",
-            bool!(cfg!(feature = "require_sse4_2"))
+            bool!(cfg!(feature = "require_sse4_1")),
         )
         .define(
             "ALSOFT_REQUIRE_NEON",
-            bool!(cfg!(feature = "require_arm_neon"))
+            bool!(cfg!(feature = "require_arm_neon")),
         )
         .define(
             "ALSOFT_REQUIRE_RTKIT",
-            bool!(cfg!(feature = "require_rtkit"))
+            bool!(cfg!(feature = "require_rtkit")),
         )
         .define(
             "ALSOFT_REQUIRE_PIPEWIRE",
-            bool!(cfg!(feature = "require_pipewire"))
+            bool!(cfg!(feature = "require_pipewire")),
         )
         .define(
             "ALSOFT_REQUIRE_PULSEAUDIO",
-            bool!(cfg!(feature = "require_pulseaudio"))
+            bool!(cfg!(feature = "require_pulseaudio")),
         )
         .define("ALSOFT_REQUIRE_ALSA", bool!(cfg!(feature = "require_alsa")))
         .define("ALSOFT_REQUIRE_OSS", bool!(cfg!(feature = "require_oss")))
         .define(
             "ALSOFT_REQUIRE_SOLARIS",
-            bool!(cfg!(feature = "require_solaris"))
+            bool!(cfg!(feature = "require_solaris")),
         )
         .define(
             "ALSOFT_REQUIRE_SNDIO",
-            bool!(cfg!(feature = "require_sndio"))
+            bool!(cfg!(feature = "require_sndio")),
         )
         .define(
             "ALSOFT_REQUIRE_WINMM",
-            bool!(cfg!(feature = "require_winmm"))
+            bool!(cfg!(feature = "require_winmm")),
         )
         .define(
             "ALSOFT_REQUIRE_DSOUND",
-            bool!(cfg!(feature = "require_directsound"))
+            bool!(cfg!(feature = "require_directsound")),
         )
         .define(
             "ALSOFT_REQUIRE_WASAPI",
-            bool!(cfg!(feature = "require_wasapi"))
+            bool!(cfg!(feature = "require_wasapi")),
         )
         .define("ALSOFT_REQUIRE_JACK", bool!(cfg!(feature = "require_jack")))
         .define(
             "ALSOFT_REQUIRE_COREAUDIO",
-            bool!(cfg!(feature = "require_coreaudio"))
+            bool!(cfg!(feature = "require_coreaudio")),
         )
         .define("ALSOFT_REQUIRE_OBOE", bool!(cfg!(feature = "require_oboe")))
         .define(
             "ALSOFT_REQUIRE_OPENSL",
-            bool!(cfg!(feature = "require_opensl"))
+            bool!(cfg!(feature = "require_opensl")),
         )
         .define(
             "ALSOFT_REQUIRE_PORTAUDIO",
-            bool!(cfg!(feature = "require_portaudio"))
+            bool!(cfg!(feature = "require_portaudio")),
         )
         .define("ALSOFT_REQUIRE_SDL2", bool!(cfg!(feature = "require_sdl2")))
         .define(
             "ALSOFT_REQUIRE_WAVE",
-            bool!(cfg!(feature = "require_wave_writer"))
+            bool!(cfg!(feature = "require_wave_writer")),
         )
         .build();
 

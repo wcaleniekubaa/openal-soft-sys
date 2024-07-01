@@ -1,6 +1,6 @@
 [package]
 name = "openal-soft-sys"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["wcaleniekubaa"]
 description = "crate that provides ffi interface to openal-soft library"
@@ -38,10 +38,9 @@ default = [
     "enable_opensl",
     "enable_portaudio",
     "enable_wave_writer",
-    "dynamic_link",
 ]
 bundled = ["dep:cmake"]
-dynamic_link = []
+static_link = []
 check_dlopen = []
 enable_legacy_eax = []
 enable_sse = []
