@@ -185,4 +185,5 @@ fn build_cmake() {
 
     println!("cargo:rustc-link-lib=OpenAL32");
     println!("cargo:rustc-link-search={}", dst.display());
+    println!("cargo:rustc-link-search={}", dst.join("lib").display());
 }
