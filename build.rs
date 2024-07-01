@@ -1,3 +1,8 @@
+use std::{
+    env, fs,
+    path::{Path, PathBuf},
+};
+
 fn main() {
     println!("cargo:rerun-if-changed=openal-soft");
     println!("cargo:rerun-if-changed=build.rs");
@@ -183,7 +188,44 @@ fn build_cmake() {
         )
         .build();
 
+    let lib = dst.join("lib");
+    let bin = dst.join("bin");
+
     println!("cargo:rustc-link-lib=OpenAL32");
     println!("cargo:rustc-link-search={}", dst.display());
-    println!("cargo:rustc-link-search={}", dst.join("lib").display());
+    println!("cargo:rustc-link-search={}", lib.display());
+
+    copy_binaries(&bin, &find_cargo_target_dir());
+}
+
+fn copy_binaries(dst: &Path, src: &Path) {
+    for entry in fs::read_dir(src).unwrap() {
+        let entry = entry.unwrap();
+        let path = entry.path();
+        if path.is_file() {
+            fs::copy(&path, dst.join(path.file_name().unwrap())).unwrap();
+        }
+    }
+}
+
+fn find_cargo_target_dir() -> PathBuf {
+    // Infer the top level cargo target dir from the OUT_DIR by searching
+    // upwards until we get to $CARGO_TARGET_DIR/build/ (which is always one
+    // level up from the deepest directory containing our package name)
+    let pkg_name = env::var("CARGO_PKG_NAME").unwrap();
+    let mut out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+    loop {
+        {
+            let final_path_segment = out_dir.file_name().unwrap();
+            if final_path_segment.to_string_lossy().contains(&pkg_name) {
+                break;
+            }
+        }
+        if !out_dir.pop() {
+            panic!("Malformed build path: {}", out_dir.to_string_lossy());
+        }
+    }
+    out_dir.pop();
+    out_dir.pop();
+    out_dir
 }
