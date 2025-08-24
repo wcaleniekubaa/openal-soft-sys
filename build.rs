@@ -1,9 +1,10 @@
 #[cfg(feature = "build")]
 mod cmake_build {
-    use std::env;
-    use std::{io, path::PathBuf, process::Command};
+    use std::path::PathBuf;
+    use std::process::Command;
+    use std::{env, io};
     macro_rules! feature_cmake_str {
-        ($feature: literal) => {
+        ($feature:literal) => {
             if cfg!(feature = $feature) {
                 "ON"
             } else {
@@ -54,7 +55,7 @@ mod cmake_build {
             .define("ALSOFT_BACKEND_PIPEWIRE", feature_cmake_str!("pipewire"))
             .define(
                 "ALSOFT_BACKEND_PULSEAUDIO",
-                feature_cmake_str!("pulseaudio"),
+                feature_cmake_str!("pulseaudio")
             )
             .define("ALSOFT_BACKEND_ALSA", feature_cmake_str!("alsa"))
             .define("ALSOFT_BACKEND_OSS", feature_cmake_str!("oss"))
