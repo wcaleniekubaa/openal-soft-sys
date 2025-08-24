@@ -2,17 +2,7 @@
 name = "openal-soft-sys"
 description = "Low-level Rust FFI bindings to the OpenAL Soft library."
 license = "MIT OR Apache-2.0"
-keywords = [
-    "openal",
-    "openal-soft",
-    "audio",
-    "3d-audio",
-    "ffi",
-    "bindings",
-    "rust",
-    "cross-platform",
-    "low-level",
-]
+keywords = ["openal", "audio", "3d-audio", "ffi", "cross-platform"]
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.77.0"
