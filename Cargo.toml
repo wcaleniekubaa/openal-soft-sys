@@ -1,0 +1,63 @@
+[package]
+name = "openal-soft-sys"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[features]
+default = ["build", "all_cpu_features", "all_backends"]
+build = ["dep:cmake"]
+
+# cpu features
+sse = []
+sse2 = []
+sse3 = []
+sse4_1 = []
+
+sse_all = ["sse", "sse2", "sse3", "sse4_1"]
+
+arm_neon = []
+
+all_cpu_features = ["sse_all", "arm_neon"]
+
+# backends
+pipewire = []
+pulseaudio = []
+alsa = []
+oss = []
+solaris = []
+sndio = []
+# windows multimedia
+winmm = []
+directsound = []
+jack = []
+coreaudio = []
+oboe = []
+opensl = []
+portaudio = []
+sdl3 = []
+sdl2 = []
+wave = []
+
+all_backends = [
+    "pipewire",
+    "pulseaudio",
+    "alsa",
+    "oss",
+    "solaris",
+    "sndio",
+    "winmm",
+    "directsound",
+    "jack",
+    "coreaudio",
+    "oboe",
+    "opensl",
+    "portaudio",
+    "sdl3",
+    "sdl2",
+    "wave",
+]
+
+[build-dependencies]
+cmake = { version = "0.1.54", optional = true }
