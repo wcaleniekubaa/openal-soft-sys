@@ -16,10 +16,8 @@ keywords = [
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.77.0"
-
+repository = "https://github.com/wcaleniekubaa/openal-soft-sys"
 categories = ["external-ffi-bindings", "multimedia", "multimedia::audio"]
-
-[dependencies]
 
 [features]
 default = ["build", "all_cpu_features", "all_backends"]
